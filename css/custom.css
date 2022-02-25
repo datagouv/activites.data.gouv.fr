@@ -1,0 +1,34 @@
+.buttonsHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+    
+.buttonHeader{
+    padding-left: .75rem;
+    padding-right: .75rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    background-color: #E9EDFD;
+    color: #265BC2;
+    margin-right: 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+    
+.buttonHeader:hover{
+    background-color: #C4CEFB;
+}
+
+.buttonHeaderSelected{
+    background-color: #3558a2;
+    color: white;
+}
+
+.buttonHeaderSelected:hover{
+    background-color: #4D66B9;
+    color: white;
+}
