@@ -1,6 +1,5 @@
 <template>
   <div class="homepage">
-    <header-datagouv></header-datagouv>
     <div class="page">
       <div class="menu">
         <div class="menuContent">
@@ -120,10 +119,12 @@
         </div>
         <periode-selector></periode-selector>
         <div>
+
+
           <div id="visites" class="widget" v-if="this.selectPage == 'audience'">
             <div>
               <div class="chart_container">
-                  <line-chart indicateur="matomo-stats-visits"></line-chart>
+                  <line-chart indicateur="matomo-stats-visits" fetchtype="file"></line-chart>
               </div>
               <div class="chart_info" @click="clickSelectInfo('visites')">
                   <span v-if="this.selectInfo && this.selectInfoChart == 'visites'">
@@ -144,7 +145,7 @@
           <div id="visiteurs-uniques" class="widget" v-if="this.selectPage == 'audience'">
             <div>
               <div class="chart_container">
-                  <line-chart indicateur="matomo-stats-uniq_visits"></line-chart>
+                  <line-chart indicateur="matomo-stats-uniq_visits" fetchtype="file"></line-chart>
               </div>
               <div class="chart_info" @click="clickSelectInfo('visiteurs-uniques')">
                   <span v-if="this.selectInfo && this.selectInfoChart == 'visiteurs-uniques'">
@@ -166,7 +167,7 @@
           <div id="telechargements" class="widget" v-if="this.selectPage == 'audience'">
             <div>
               <div class="chart_container">
-                  <line-chart indicateur="matomo-stats-downloads"></line-chart>
+                  <line-chart indicateur="matomo-stats-downloads" fetchtype="file"></line-chart>
               </div>
               <div class="chart_info" @click="clickSelectInfo('telechargements')">
                   <span v-if="this.selectInfo && this.selectInfoChart == 'telechargements'">
@@ -301,7 +302,7 @@
           <div id="top10datasets" class="widget" v-if="this.selectPage == 'tops'">
             <div>
               <div class="chart_container">
-                  <data-table indicateur="matomo-tops-datasets" color="rgba(196, 206, 251, 0.5)"></data-table>
+                  <data-table indicateur="matomo-tops-datasets" fetchtype="file" color="rgba(196, 206, 251, 0.5)"></data-table>
               </div>
               <div class="chart_info" @click="clickSelectInfo('top10datasets')">
                   <span v-if="this.selectInfo && this.selectInfoChart == 'top10datasets'">
@@ -323,7 +324,7 @@
           <div id="top10reuses" class="widget" v-if="this.selectPage == 'tops'">
             <div>
               <div class="chart_container">
-                  <data-table indicateur="matomo-tops-reuses" color="rgba(31,141,73,0.3)"></data-table>
+                  <data-table indicateur="matomo-tops-reuses" fetchtype="file" color="rgba(31,141,73,0.3)"></data-table>
               </div>
               <div class="chart_info" @click="clickSelectInfo('top10reuses')">
                   <span v-if="this.selectInfo && this.selectInfoChart == 'top10reuses'">
@@ -348,7 +349,7 @@
           <div id="top10datasetsTrendings" class="widget" v-if="this.selectPage == 'trendings'">
             <div>
               <div class="chart_container">
-                  <data-table indicateur="tops-trending-datasets" color="rgba(196, 206, 251, 0.5)"></data-table>
+                  <data-table indicateur="tops-trending-datasets" fetchtype="file" color="rgba(196, 206, 251, 0.5)"></data-table>
               </div>
               <div class="chart_info" @click="clickSelectInfo('top10datasetsTrendings')">
                   <span v-if="this.selectInfo && this.selectInfoChart == 'top10datasetsTrendings'">
@@ -370,7 +371,7 @@
           <div id="top10reusesTrendings" class="widget" v-if="this.selectPage == 'trendings'">
             <div>
               <div class="chart_container">
-                  <data-table indicateur="tops-trending-reuses" color="rgba(31,141,73,0.3)"></data-table>
+                  <data-table indicateur="tops-trending-reuses" fetchtype="file" color="rgba(31,141,73,0.3)"></data-table>
               </div>
               <div class="chart_info" @click="clickSelectInfo('top10reusesTrendings')">
                   <span v-if="this.selectInfo && this.selectInfoChart == 'top10reusesTrendings'">
@@ -392,7 +393,6 @@
         </div>
       </div>
     </div>
-    <footer-datagouv></footer-datagouv>
   </div>
 </template>
 
@@ -400,7 +400,6 @@
 
 import BarChart from '@/components/BarChart'
 import LineChart from '@/components/LineChart'
-import FooterDatagouv from './FooterDatagouv.vue'
 
 export default {
   name: 'HomepageWidget',

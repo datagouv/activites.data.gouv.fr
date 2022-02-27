@@ -30,12 +30,16 @@ export default {
   mixins: [mixin],
   data(){
     return {
-      dataset:undefined
+      dataset:undefined,
+      objectId: ''
     }
   },
   props: {
     indicateur: String,
     color: String,
+    slug: String,
+    fetchtype: String,
+    apiurl: String,
   },
   computed: {
     rowStyle() {
@@ -49,10 +53,22 @@ export default {
   },
   methods: {
     async getData () {
-      var url = this.indicateur+"-"+this.selectedPeriode
-      store.dispatch('getData', url).then(data => {
-        this.dataset = data
-      })
+      var url = ''
+      console.log(this.fetchtype)
+      if(this.fetchtype == 'file'){
+        console.log('zceve')
+        url = this.indicateur+"-"+this.selectedPeriode
+        store.dispatch('getData', url).then(data => {
+          this.dataset = data
+        })
+      } else {
+        console.log('jhhh')
+        url = this.apiurl + '/' + this.objectId + '/' + this.selectedPeriode
+        store.dispatch('getDataUrl', url).then(data => {
+          this.dataset = data
+        })
+      }   
+
     },
     getBg (value) {
       var p = value/this.dataset["values"][0]["value"]*100
@@ -75,7 +91,29 @@ export default {
     }
   },
   created(){
-    this.getData()
+    console.log(this.apiurl)
+    if(this.slug) {
+      console.log('popop')
+      var realslug = this.slug.split('/')[0]
+      var idsite = ''
+      if (this.slug.split('/').length > 1) {
+        idsite = this.slug.split('/')[1]
+      }
+      fetch('https://www.data.gouv.fr/api/1/' + this.indicateur + '/'+realslug).then(res => {
+        return res.json()
+      }).then(data => {
+        if(idsite == ''){
+          this.objectId = data.id
+        }else{
+          this.objectId = data.id + '/' +idsite
+        }
+        this.getData()
+      })
+    }else{
+      console.log('ded')
+      this.getData()
+    }
+
     
   },
 }
@@ -92,7 +130,7 @@ export default {
   }
   .chart{
     width: 100%;
-    height:900px;
+    min-height:200px;
     .table{
       width: 100%;
       .row{

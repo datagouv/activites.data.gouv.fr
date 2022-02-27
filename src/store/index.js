@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const BASE_URL = 'https://object.files.data.gouv.fr/opendata/datagouv/dashboard'
+const API_URL = 'http://metrics-datagouv-api.dataeng.etalab.studio'
 
 export default new Vuex.Store({
   state: {
@@ -13,10 +14,25 @@ export default new Vuex.Store({
   },
   actions: {
     getData ({ commit, state }, indicator) {
+
       if (state.promises[indicator]) {
         return state.promises[indicator]
       }
       const url = `${BASE_URL}/${indicator}.json`
+      const promise = fetch(url).then(res => {
+        return res.json()
+      }).then(data => {
+        commit('setData', { indicator: indicator, data: data })
+        return data
+      })
+      commit('setPromise', { indicator: indicator, promise: promise })
+      return promise
+    },
+    getDataUrl ({ commit, state }, indicator) {
+      if (state.promises[indicator]) {
+        return state.promises[indicator]
+      }
+      const url = `${API_URL}/${indicator}`
       const promise = fetch(url).then(res => {
         return res.json()
       }).then(data => {
