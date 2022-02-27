@@ -1,9 +1,10 @@
 import Vue from 'vue'
-
+import router from './router';
 import store from './store'
+import App from './App.vue';
 //import { getData } from './import.js'
 
-import HomepageWidget from './components/HomepageWidget'
+import HomepageWidget from './views/HomepageWidget'
 import BarChart from './components/BarChart'
 import LineChart from './components/LineChart'
 import DataTable from './components/DataTable'
@@ -25,3 +26,12 @@ Vue.customElement('data-table', DataTable)
 Vue.customElement('periode-selector', PeriodeSelector)
 Vue.customElement('header-datagouv', HeaderDatagouv)
 Vue.customElement('footer-datagouv', FooterDatagouv)
+
+
+
+
+new Vue({
+    router,
+    render: (h) => h(App),
+    store,
+  }).$mount('#app');

@@ -2,7 +2,8 @@
   <div>
     <div class="widget">
       <div class="chart_container" v-if="dataset">
-        <h6>{{dataset["nom"]}}</h6>
+        <h6 v-if="replaceName">{{replaceName}}</h6>
+        <h6 v-else>{{dataset["nom"]}}</h6>
         <div class="linechart_tooltip">
             <div class="tooltip_header"></div>
             <div class="tooltip_body">
@@ -29,11 +30,16 @@ export default {
       dataset:undefined,
       chartId: '',
       chart: undefined,
-      unite: ''
+      unite: '',
+      objectId: '',
     }
   },
   props: {
-    indicateur: String
+    indicateur: String,
+    fetchtype: String,
+    slug: String,
+    apiurl: String,
+    replaceName: String,
   },
   computed: {
 
@@ -45,12 +51,23 @@ export default {
   methods: {
 
     async getData () {
-      var url = this.indicateur+"-"+this.selectedPeriode
-      store.dispatch('getData', url).then(data => {
-        this.dataset = data
-        this.unite = data["unite"]
-        this.createChart()
-      })
+      var url = ''
+      if(this.fetchtype == 'file'){
+        url = this.indicateur+"-"+this.selectedPeriode
+        store.dispatch('getData', url).then(data => {
+          this.dataset = data
+          this.unite = data["unite"]
+          this.createChart()
+        })
+      } else {
+        url = this.apiurl + '/' + this.objectId + '/' + this.selectedPeriode
+        
+        store.dispatch('getDataUrl', url).then(data => {
+          this.dataset = data
+          this.unite = data["unite"]
+          this.createChart()
+        })
+      }    
     },
 
     createChart () {
@@ -238,11 +255,29 @@ export default {
   },
 
   created(){
-
-    this.chartId = 'myChart' + Math.floor(Math.random() * (1000))
-    console.log(document.getElementById(self.chartId))
-    this.getData()
-    
+    if(this.slug) {
+      var realslug = this.slug.split('/')[0]
+      var idsite = ''
+      if (this.slug.split('/').length > 1) {
+        idsite = this.slug.split('/')[1]
+      }
+      fetch('https://www.data.gouv.fr/api/1/'+this.indicateur+'/'+realslug).then(res => {
+        return res.json()
+      }).then(data => {
+        if(idsite == ''){
+          this.objectId = data.id
+        }else{
+          this.objectId = data.id + '/' +idsite
+        }
+        this.chartId = 'myChart' + Math.floor(Math.random() * (1000))
+        console.log(document.getElementById(self.chartId))
+        this.getData()
+      })
+    }else{
+      this.chartId = 'myChart' + Math.floor(Math.random() * (1000))
+      console.log(document.getElementById(self.chartId))
+      this.getData()
+    }
   },
 
 
