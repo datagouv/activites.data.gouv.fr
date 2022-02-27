@@ -9,7 +9,7 @@
     "build-production": "vue-cli-service build --mode production",
     "now-dev": "vue-cli-service serve --port=$PORT",
     "now-build": "vue-cli-service build",
-    "start": "node app.js"
+    "start": "vue-cli-service serve"
   },
   "dependencies": {
     "chart.js": "^2.9.4",
