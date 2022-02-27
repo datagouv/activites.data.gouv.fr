@@ -13,7 +13,7 @@
     "sass-loader": "^10.1.1",
     "vue": "^2.6.11",
     "vue-custom-element": "^3.2.14",
-    "vue-router": "^4.0.12",
+    "vue-router": "^3.0.1",
     "vuex": "^3.6.0"
   },
   "devDependencies": {
