@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npx vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build-production": "vue-cli-service build --mode production",
     "now-dev": "vue-cli-service serve --port=$PORT",
     "now-build": "vue-cli-service build"
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "^4.5.15",
+    "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.27.0",
     "eslint-config-standard": "^16.0.3",
