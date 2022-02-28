@@ -9,12 +9,14 @@
     "build-production": "vue-cli-service build --mode production",
     "now-dev": "vue-cli-service serve --port=$PORT",
     "now-build": "vue-cli-service build",
-    "start": "vue-cli-service serve"
+    "start": "node server.js"
   },
   "dependencies": {
     "chart.js": "^2.9.4",
+    "express": "^4.17.3",
     "sass": "^1.32.5",
     "sass-loader": "^10.1.1",
+    "serve-static": "^1.14.2",
     "vue": "^2.6.11",
     "vue-custom-element": "^3.2.14",
     "vue-router": "^3.0.1",
