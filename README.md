@@ -12,3 +12,5 @@ npm run serve
 # ou 
 npm run build
 ```
+
+Nicolas
