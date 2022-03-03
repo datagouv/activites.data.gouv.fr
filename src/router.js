@@ -15,6 +15,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: HomepageWidget,
+      meta: { viewport: "width=device-width, initial-scale=1.0" }
     },
     {
       path: '/fr/datasets/:slug',
