@@ -454,7 +454,7 @@ export default {
   }
   .widgets{
     margin-left: 20px;
-    width: 100%;
+    //width: 100%;
   }
   .widget{
 
@@ -472,9 +472,11 @@ export default {
 
   .widgets{
     margin-left: 80px;
+    width: 100%;
+    max-width: 650px;
   }
   .widget{
-    max-width: 600px;
+    max-width: 800px;
     margin-left: 0px;
     margin-right: 20px;
     padding: 20px;
