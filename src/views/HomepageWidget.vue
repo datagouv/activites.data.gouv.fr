@@ -546,17 +546,17 @@ export default {
 }
 
 .chart_info{
-  max-width: 500px;
+  max-width: 90%;
   font-weight: bold;
-  margin-top: 15px;
   padding: 15px;
   border-top: 1px solid #cecece;
   border-bottom: 1px solid #cecece;
   cursor: pointer;
+  margin:15px auto 0;
 }
 
 .content-description{
-  max-width: 400px;
+  max-width: 100%;
   margin: auto;
   font-size: 14px;
   font-weight: 400;
