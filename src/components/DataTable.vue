@@ -78,7 +78,25 @@ export default {
       window.open(url, '_blank');
     },
     pruneName (name) {
-      return name.substring(0,60)
+
+      var newName
+      
+      if(window.innerWidth<465){
+        if(name.substring(0,30) == name){
+          newName = name
+        }else{
+          newName = name.substring(0,26)+"[..]"
+        }
+      }else{
+        if(name.substring(0,60) == name){
+          newName = name
+        }else{
+          newName = name.substring(0,56)+"[..]"
+        }
+      }
+      
+      
+      return newName
     },
     updateChart () {
       this.dataset = {}
@@ -139,6 +157,7 @@ export default {
         margin-bottom: 10px;
         font-size: 14px;
         position: relative;
+        border:1px solid #eeeee4;
         .name{
             max-width: 70%;
             vertical-align: middle;
@@ -166,6 +185,10 @@ export default {
               margin-right: 15px;
               line-height: 70px;
             }
+            &.name{
+              overflow: hidden;
+              line-height: 20px;
+            }
             &.value{
               position: absolute;
               right:10px;
@@ -176,4 +199,21 @@ export default {
       }
     }
   }
+
+  @media (max-width: 465px) {
+    .chart{
+      .table{
+        .row{
+          .content{
+            div{
+              &.name{
+                max-width: 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
 </style>
