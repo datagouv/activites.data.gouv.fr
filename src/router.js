@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import HomepageWidget from './views/HomepageWidget.vue';
 import Dataset from './views/Dataset.vue';
 import Organization from './views/Organization.vue';
+import NotFound from './views/404.vue';
 
 Vue.use(Router);
 
@@ -18,13 +19,18 @@ export default new Router({
     },
     {
       path: '/fr/datasets/:slug',
-      name: 'home',
+      name: 'dataset',
       component: Dataset,
     },
     {
       path: '/fr/organizations/:slug',
-      name: 'home',
+      name: 'organization',
       component: Organization,
+    },
+    {
+      path: '*',
+      name: 'notfound',
+      component: NotFound,
     },
   ],
 });
