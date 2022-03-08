@@ -103,6 +103,15 @@ export default {
 
 @media screen and (max-width: 900px) {
 
+    .row{
+        position: absolute;
+        left:50%;
+        width: auto;
+        transform: translate(-50%,0);
+        width: 375px;
+        overflow: hidden;
+    }
+
     .marianne-logo{
         width: 120px;
         height: 120px;;
@@ -111,8 +120,8 @@ export default {
     }
 
     .row-inline{
-        width: 480px;
-        height: 200px;
+        width: 375px;
+        height: auto;
         float: left;
     }
 
@@ -129,6 +138,14 @@ export default {
 
 
 @media screen and (min-width: 900px) {
+
+    .row{
+        position: absolute;
+        left:50%;
+        width: auto;
+        transform: translate(-50%,0);
+        width: 900px;
+    }
 
     .marianne-logo{
         width: 200px;

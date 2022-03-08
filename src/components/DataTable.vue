@@ -88,10 +88,10 @@ export default {
           newName = name.substring(0,26)+"[..]"
         }
       }else{
-        if(name.substring(0,60) == name){
+        if(name.substring(0,100) == name){
           newName = name
         }else{
-          newName = name.substring(0,56)+"[..]"
+          newName = name.substring(0,96)+"[..]"
         }
       }
       
@@ -139,7 +139,7 @@ export default {
 
 <style scoped lang="scss">
   .widget{
-    max-width: 370px;
+    max-width: 530px;
   }
   @import "../../css/overload-fonts.css";
   @import "../../css/dsfr.min.css";
@@ -201,6 +201,7 @@ export default {
   }
 
   @media (max-width: 465px) {
+
     .chart{
       .table{
         .row{
@@ -213,6 +214,17 @@ export default {
           }
         }
       }
+    }
+  }
+
+
+</style>
+
+<style lang="scss">
+
+  @media (max-width: 465px) {
+    .chart_container{
+      margin-left:0!important;
     }
   }
 

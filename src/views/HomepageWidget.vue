@@ -454,17 +454,23 @@ export default {
   }
   .widgets{
     margin-left: 20px;
-    //width: 100%;
+    width: 100%;
   }
   .widget{
-
-    max-width: 400px;
+    width: 100%;
     margin: auto;
     padding: 20px;
     border: 1px solid #ebebeb;
+    margin-left: 0;
+
   }
   .pageSelector2{
     padding-top: 30px;
+  }
+
+  .page{
+    overflow: hidden;
+    width: 100%;
   }
 }
 
