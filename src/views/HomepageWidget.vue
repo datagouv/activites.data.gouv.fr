@@ -457,14 +457,20 @@ export default {
     width: 100%;
   }
   .widget{
-
-    max-width: 400px;
+    width: 100%;
     margin: auto;
     padding: 20px;
     border: 1px solid #ebebeb;
+    margin-left: 0;
+
   }
   .pageSelector2{
     padding-top: 30px;
+  }
+
+  .page{
+    overflow: hidden;
+    width: 100%;
   }
 }
 
@@ -472,9 +478,11 @@ export default {
 
   .widgets{
     margin-left: 80px;
+    width: 100%;
+    max-width: 650px;
   }
   .widget{
-    max-width: 600px;
+    max-width: 800px;
     margin-left: 0px;
     margin-right: 20px;
     padding: 20px;
@@ -544,17 +552,17 @@ export default {
 }
 
 .chart_info{
-  max-width: 500px;
+  max-width: 90%;
   font-weight: bold;
-  margin-top: 15px;
   padding: 15px;
   border-top: 1px solid #cecece;
   border-bottom: 1px solid #cecece;
   cursor: pointer;
+  margin:15px auto 0;
 }
 
 .content-description{
-  max-width: 400px;
+  max-width: 100%;
   margin: auto;
   font-size: 14px;
   font-weight: 400;

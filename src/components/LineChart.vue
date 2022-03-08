@@ -87,9 +87,8 @@ export default {
       setTimeout(function(){
 
         const ctx = document.getElementById(self.chartId).getContext('2d')
-        let gradientFill
-        this.display === 'big' ? gradientFill = ctx.createLinearGradient(0, 0, 0, 500) : gradientFill = ctx.createLinearGradient(0, 0, 0, 250)
-        gradientFill.addColorStop(0, 'rgba(218, 218, 254, 0.6)')
+        let gradientFill = ctx.createLinearGradient(0, 0, 0, 500)
+        gradientFill.addColorStop(0, 'rgba(20, 107, 184, 0.6)')
         gradientFill.addColorStop(0.6, 'rgba(245, 245, 255, 0)')
         self.chart = new Chart(ctx, {
           data: {
@@ -103,7 +102,7 @@ export default {
               pointRadius: 8,
               pointBackgroundColor: 'rgba(0, 0, 0, 0)',
               pointBorderColor: 'rgba(0, 0, 0, 0)',
-              pointHoverBackgroundColor: 'rgba(0, 0, 145, 1)',
+              pointHoverBackgroundColor: 'rgba(20, 107, 184, 1)',
               pointHoverRadius: 6
             }]   
           },
@@ -132,7 +131,7 @@ export default {
                     return formula
                   }
                 },
-                offset: true
+                offset: false
               }],
               yAxes: [{
                 gridLines: {
@@ -270,12 +269,10 @@ export default {
           this.objectId = data.id + '/' +idsite
         }
         this.chartId = 'myChart' + Math.floor(Math.random() * (1000))
-        console.log(document.getElementById(self.chartId))
         this.getData()
       })
     }else{
       this.chartId = 'myChart' + Math.floor(Math.random() * (1000))
-      console.log(document.getElementById(self.chartId))
       this.getData()
     }
   },
@@ -286,7 +283,7 @@ export default {
 
 <style scoped lang="scss">
   .widget{
-    max-width: 500px;
+    //max-width: 500px;
   }
 
   @import "../../css/overload-fonts.css";
